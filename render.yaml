@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: squarest-notebook-simple
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false  # Set manually in Render dashboard
+      - key: ANTHROPIC_API_KEY
+        sync: false  # Optional
+      - key: GOOGLE_API_KEY
+        sync: false  # Optional
+    disk:
+      name: notebook-data
+      mountPath: /app/data
+      sizeGB: 1  # SQLite is tiny, 1GB is plenty
